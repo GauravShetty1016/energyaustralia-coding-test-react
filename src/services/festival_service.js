@@ -1,6 +1,6 @@
 import http from "./http_service";
 
-const apiUrl = process.env.API_URL + "/festivals";
+const apiUrl = process.env.REACT_APP_API_URL + "/festivals";
 
 async function getFestivals() {
   const data = await http.get(apiUrl);

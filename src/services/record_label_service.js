@@ -6,7 +6,7 @@ const getSortedRecordsFromFestivals = (festivals, order = "asc") => {
   let bands = {};
   let recordData = [];
 
-  if (_.isEmpty(festivals)) return;
+  if (_.isEmpty(festivals)) return [];
 
   _.forEach(festivals, festival => {
     _.forEach(festival.bands, band => {
@@ -42,6 +42,8 @@ const getSortedRecordsFromFestivals = (festivals, order = "asc") => {
 };
 
 const errorHandler = error => {
+  if (!error.response) return { error: { status: 500, message: error.message } };
+
   let message = "Unknown error";
   const {
     response: { status }
@@ -54,7 +56,7 @@ const errorHandler = error => {
 async function getRecordLabels() {
   try {
     const festivals = await FestivalService.getFestivals();
-    return getSortedRecordsFromFestivals(festivals.data);
+    return { recordLabels: getSortedRecordsFromFestivals(festivals.data) };
   } catch (error) {
     return errorHandler(error);
   }
