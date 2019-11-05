@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.timeout = 1000;
+axios.defaults.timeout = 2000;
 
 axios.interceptors.response.use(null, error => {
   const expectedError = error.response && error.response.status >= 400 && error.response.status < 500;

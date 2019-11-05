@@ -10,14 +10,15 @@ const getSortedRecordsFromFestivals = (festivals, order = "asc") => {
 
   _.forEach(festivals, festival => {
     _.forEach(festival.bands, band => {
+      if (!festival.name) return false;
       const label = _.isEmpty(band.recordLabel) ? "No Record Label" : band.recordLabel.trim();
       recordLabels[label] = recordLabels[label] || { bands: {} };
       bands[band.name] = _.isEmpty(bands[band.name])
-        ? [festival.name]
+        ? [{ name: festival.name, type: "festival" }]
         : !_.includes(bands[band.name], festival.name)
-        ? [...bands[band.name], festival.name]
+        ? [...bands[band.name], { name: festival.name }]
         : bands[band.name];
-      recordLabels[label].bands[band.name] = _.compact(bands[band.name]);
+      recordLabels[label].bands[band.name] = bands[band.name];
     });
   });
 
@@ -27,12 +28,12 @@ const getSortedRecordsFromFestivals = (festivals, order = "asc") => {
       const bandData = _.reduce(
         bands,
         (data, festivals, name) => {
-          data.push({ name, festivals: _.orderBy(festivals, _.identity, order) });
+          data.push({ name, nodes: _.orderBy(festivals, "name", order), type: "band" });
           return data;
         },
         []
       );
-      data.push({ name, bands: _.orderBy(bandData, "name", order) });
+      data.push({ name, nodes: _.orderBy(bandData, "name", order), type: "recordLabel" });
       return data;
     },
     []

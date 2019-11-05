@@ -5,14 +5,14 @@ import RecordLabelService from "../services/record_label_service";
 class App extends Component {
   state = {
     recordLabels: [],
-    error: {}
+    error: null
   };
   async componentDidMount() {
     const { recordLabels, error } = await RecordLabelService.getRecordLabels();
     if (error) {
       this.setState({ error });
     } else {
-      this.setState({ recordLabels });
+      this.setState({ recordLabels, error: null });
     }
   }
   render() {

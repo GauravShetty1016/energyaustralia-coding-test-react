@@ -90,7 +90,7 @@ describe("Record Label Services", () => {
         });
       });
     });
-
+    // TODO: Update to reflect the fact that its going to be a consistent naming convention.
     it("Should have the correct keys", async () => {
       const response = await RecordLabelService.getRecordLabels();
       const record = response.recordLabels[0];
