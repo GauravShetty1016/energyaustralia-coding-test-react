@@ -1,5 +1,5 @@
 import moxios from "moxios";
-import RecordLabelService from "../../services/record_label_service";
+import RecordLabelService from "../../services/recordLabelService";
 import _ from "lodash";
 
 describe("Record Label Services", () => {

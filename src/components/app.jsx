@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import RecordLabelList from "./RecordLabelList";
-import RecordLabelService from "../services/record_label_service";
+import RecordLabelService from "../services/recordLabelService";
 
 class App extends Component {
   state = {

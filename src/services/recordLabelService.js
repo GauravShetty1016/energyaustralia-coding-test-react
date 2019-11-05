@@ -1,4 +1,4 @@
-import FestivalService from "./festival_service";
+import FestivalService from "./festivalService";
 import _ from "lodash";
 
 const getSortedRecordsFromFestivals = (festivals, order = "asc") => {

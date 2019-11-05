@@ -32,6 +32,8 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^4.2.3",
+    "@testing-library/react": "^9.3.2",
     "moxios": "^0.4.0"
   }
 }
