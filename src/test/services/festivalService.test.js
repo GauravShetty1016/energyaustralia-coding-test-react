@@ -1,5 +1,5 @@
 import moxios from "moxios";
-import FestivalService from "../../services/festival_service";
+import FestivalService from "../../services/festivalService";
 
 describe("Festival Services", function() {
   beforeEach(() => moxios.install());
